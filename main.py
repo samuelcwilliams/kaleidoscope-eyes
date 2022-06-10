@@ -16,7 +16,7 @@ clicked = False
 r = g =b = xpos = ypos = 0
 
 # this function uses the colors.csv file that was loaded to return the color name and RGB value
-def recognize_color(R, G, B)
+def recognize_color(R, G, B):
 	minimum = 10000
 	for i in range(len(colors)):
 		d = abs(R- int(colors.loc[i, "R"])) + abs(G- int(colors.loc[i, "G"])) + abs(B- int(colors.loc[i, "B"])) 
@@ -40,3 +40,23 @@ def mouse_click(event, x, y, flags, param):
 # this section creates the window with the image inside
 cv2.namedWindow('Kaleidoscope Eyes')
 cv2.setMouseCallback('Kaleidoscope Eyes', mouse_click)
+
+# while loop that starts the application and keeps it running
+while(1):
+    cv2.imshow("Kaleidoscope Eyes", img)
+    if (clicked):
+       cv2.rectangle(img,(20,20), (750,60), (b,g,r), -1)
+       test = recognize_color(r,g,b) + ' R='+ str(r) + ' G='+str(g) + ' B='+ str(b)
+       cv2.putText(img, text, (50,50), 2, 0, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+
+       if(r+g+b>=600):
+           cv2.putText(img, text, (50, 50), 2, 0, 0.8, (0,0,0), 2, cv2.LINE_AA)
+
+           clicked=False
+    
+    # checks to see if the esc key is pressed
+    if cv2.waitKey(20) & 0xFF ==27:
+        break
+
+# closes window
+cv2.destroyAllWindows()
