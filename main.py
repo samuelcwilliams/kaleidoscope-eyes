@@ -27,12 +27,12 @@ def recognize_color(R, G, B):
 
 # this function triggers the mouse_click event 
 def mouse_click(event, x, y, flags, param):
-	if event == cv2.EVENT_LBUTTONDCLK:
+	if event == cv2.EVENT_LBUTTONDBLCLK:
 		global b, g, r, xpos, ypos, clicked
 		clicked = True
 		xpos = x
 		ypos = y 
-		b, g, r, = img[y, x]
+		b, g, r, = image[y, x]
 		b = int(b)
 		g = int(g)
 		r = int(r)
@@ -43,14 +43,14 @@ cv2.setMouseCallback('Kaleidoscope Eyes', mouse_click)
 
 # while loop that starts the application and keeps it running
 while(1):
-    cv2.imshow("Kaleidoscope Eyes", img)
+    cv2.imshow("Kaleidoscope Eyes", image)
     if (clicked):
-       cv2.rectangle(img,(20,20), (750,60), (b,g,r), -1)
-       test = recognize_color(r,g,b) + ' R='+ str(r) + ' G='+str(g) + ' B='+ str(b)
-       cv2.putText(img, text, (50,50), 2, 0, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+       cv2.rectangle(image,(20,20), (750,60), (b,g,r), -1)
+       text = recognize_color(r,g,b) + ' R='+ str(r) + ' G='+str(g) + ' B='+ str(b)
+       cv2.putText(image, text, (50,50), 2, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
 
        if(r+g+b>=600):
-           cv2.putText(img, text, (50, 50), 2, 0, 0.8, (0,0,0), 2, cv2.LINE_AA)
+           cv2.putText(image, text, (50, 50), 2, 0.8, (0,0,0), 2, cv2.LINE_AA)
 
            clicked=False
     
