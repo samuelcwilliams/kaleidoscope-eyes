@@ -8,3 +8,6 @@ Next, run the program using python main.py, this should open a window with the i
 Use the cursor and double click the point on the image that you would like to color check. 
 Once double clicked, the RGB values should appear in the top right corner of the window. 
 To exit, press the ESC key. 
+
+# NOTE:
+Please make sure that OpenCV, Pandas, and Numpy are installed to ensure that the program works properly.
