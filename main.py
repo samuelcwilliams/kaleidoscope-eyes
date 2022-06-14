@@ -3,7 +3,8 @@ import pandas as pd
 import cv2
 
 # defining the image
-image = cv2.imread("image.jpg")
+your_image = input("Please enter your image name: ")
+image = cv2.imread(your_image)
 
 # defining the index of the .csv
 index=["color", "color_name", "hex", "R", "G", "B"]
