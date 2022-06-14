@@ -4,7 +4,6 @@ import cv2
 import pyperclip
 
 # defining the image
-# your_image = input("Please enter your image name: ")
 image = cv2.imread(input("Please enter your image: "))
 
 # defining the index of the .csv
@@ -15,7 +14,7 @@ colors = pd.read_csv('colors.csv', names=index, header=None)
 
 # defining global variables
 clicked = False
-r = g =b = xpos = ypos = 0
+r = g = b = xpos = ypos = 0
 
 # this function uses the colors.csv file that was loaded to return the color name and RGB value
 def recognize_color(R, G, B):
